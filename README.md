@@ -38,6 +38,7 @@
 > 1. Financial support: [GitHub Sponsors](https://github.com/sponsors/ryo-ma)
 > 2. Reducing server load through self-hosting (by forking on GitHub and
 > deploying to Vercel)
+> 3. Self-hosting with Docker on your own server (see [Docker Deployment Guide](./DOCKER.md))
 
 # Quick Start
 
@@ -550,6 +551,37 @@ https://github-profile-trophy.vercel.app/?username=ryo-ma&no-frame=true
 <p align="center">
   <img width="936" src="https://github.com/user-attachments/assets/54de15a3-d907-4a50-8117-170aae74d1cd">
 </p>
+
+# Self-Hosting with Docker
+
+You can run this service on your own server using Docker. This helps reduce load on the public service and gives you full control.
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/ryo-ma/github-profile-trophy.git
+cd github-profile-trophy
+
+# Configure environment
+cp .env.docker .env
+# Edit .env and add your GitHub token
+
+# Start with Docker Compose
+docker-compose up -d
+```
+
+The service will be available at `http://localhost:8000`
+
+For detailed instructions, see the [Docker Deployment Guide](./DOCKER.md).
+
+## Using Pre-built Images
+
+Pre-built Docker images are automatically published to GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/OWNER/github-profile-trophy:latest
+```
 
 # Contribution Guide
 

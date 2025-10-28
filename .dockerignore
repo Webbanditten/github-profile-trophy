@@ -1,0 +1,21 @@
+# Git
+.git
+.gitignore
+.github
+
+# CI/CD
+.vercelignore
+vercel.json
+
+# Documentation
+README.md
+CONTRIBUTING.md
+LICENSE
+
+# Development
+.editorconfig
+docker-compose.yml
+.env
+
+# Deno cache
+.deno

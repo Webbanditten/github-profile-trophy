@@ -1,7 +1,41 @@
-version: "3"
 services:
+  app:
+    container_name: trophy-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8080"
+    environment:
+      - PORT=8080
+      - GITHUB_TOKEN1=${GITHUB_TOKEN1}
+      - GITHUB_TOKEN2=${GITHUB_TOKEN2}
+      - GITHUB_API=https://api.github.com/graphql
+      - ENABLE_REDIS=${ENABLE_REDIS:-true}
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+      - REDIS_USERNAME=${REDIS_USERNAME}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - trophy-network
+
   redis:
     container_name: trophy-redis
-    image: redis:latest
+    image: redis:alpine
     ports:
       - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - trophy-network
+
+volumes:
+  redis-data:
+
+networks:
+  trophy-network:
+    driver: bridge
