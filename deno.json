@@ -2,8 +2,11 @@
   "tasks": {
     "start": "deno run -A main.ts",
     "debug": "deno run --inspect-brk -A main.ts",
-    "format": "deno fmt",
+    "format": "deno fmt --ignore=.github/,*.md",
     "lint": "deno lint",
     "test": "ENV_TYPE=test deno test --allow-env"
+  },
+  "fmt": {
+    "exclude": [".github/", "*.md"]
   }
 }
